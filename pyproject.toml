@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "utility-belt"
+version = "0.1.0"
+description = "Small, focused utilities + example notebooks"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "beautifulsoup4>=4.12",
+    "requests>=2.31",
+    "reportlab>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "ruff>=0.4.0",
+    "black>=24.3.0",
+    "pre-commit>=3.5.0",
+    "jupytext>=1.16.0",
+    "nbstripout>=0.6.1",
+]
+
+[project.scripts]
+ub-merge-files = "utility_belt.cli.merge_files_to_text:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I"]
+fix = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
